@@ -9,10 +9,10 @@ export class LoginPage {
 
     constructor(page: Page) {
         this.page = page;
-        this.usernameInput = page.getByTestId('username');
-        this.passwordInput = page.getByTestId('password');
-        this.loginButton = page.getByTestId('login-button');
-        this.errorMessage = page.getByTestId('error');
+        this.usernameInput = page.locator('[data-test=username]');
+        this.passwordInput = page.locator('[data-test=password]');
+        this.loginButton = page.locator('[data-test=login-button]');
+        this.errorMessage = page.locator('[data-test=error]');
     }
 
     async genericLogin(username: string, password: string) {
@@ -36,9 +36,5 @@ export class LoginPage {
         * @return {Promise<void>} - A promise that resolves when the assertion is complete.
         */
         await expect(this.errorMessage).toContainText(message);
-    }
-
-    async validLogin(username: string, password: string) {
-        
     }
 }
