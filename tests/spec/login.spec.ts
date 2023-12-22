@@ -16,7 +16,7 @@ test.describe('Login Scenarios:', () => {
     });
 
     for (const loginScenario of loginScenarios) { 
-        test(`Invalid Login: (${loginScenario.test_case})`, async ({ page }) => {
+        test(`Invalid Login: ${loginScenario.test_case}`, async ({ page }) => {
             const loginPage = new LoginPage(page);
             await loginPage.genericLogin(loginScenario.username, loginScenario.password);
             await loginPage.expectErrorMessage(loginScenario.error_message);

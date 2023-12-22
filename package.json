@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "test:smoke": "npx playwright test --grep @smoke",
+    "test:visual": "npx playwright test --grep @visual",
+    "test:all": "npx playwright test"
   },
   "keywords": [],
   "author": "",

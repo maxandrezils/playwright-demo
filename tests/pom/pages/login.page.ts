@@ -37,4 +37,16 @@ export class LoginPage {
         */
         await expect(this.errorMessage).toContainText(message);
     }
+
+    async validLogin() { 
+        /**
+        * Executes a valid login by filling the username and password fields
+        * with predefined values and clicking the login button.
+        *
+        * @return {Promise<void>} A promise that resolves when the login is successful.
+        */
+        await this.usernameInput.fill('standard_user');
+        await this.passwordInput.fill('secret_sauce');
+        await this.loginButton.click();
+    }
 }
