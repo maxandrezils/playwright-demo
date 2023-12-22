@@ -1,0 +1,18 @@
+name: Lint TypeScript
+
+on:
+  push:
+    branches: [main] # Trigger on pushes to the main branch
+  pull_request:
+    branches: [main] # Also trigger on pull requests to the main branch
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest # Use the latest Ubuntu environment
+    steps:
+      - uses: actions/checkout@v3 # Checkout the code
+      - uses: actions/setup-node@v3 # Set up Node.js environment
+        with:
+          node-version: 16 # Specify the Node.js version
+      - run: npm install # Install dependencies
+      - run: npm run lint # Run your linting command
