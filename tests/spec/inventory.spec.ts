@@ -8,5 +8,10 @@ test.describe('Inventory Scenarios:', () => {
         await page.goto('/');
         await loginPage.validLogin();
     });
-    
+    /**
+     * Scenarios:
+     * - items can be reordered and the order is validated
+     * -
+     * 
+     */
 });
