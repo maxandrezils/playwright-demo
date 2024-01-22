@@ -1,6 +1,7 @@
 import { test } from '@playwright/test';
 import { InventoryPage } from '../pom/pages/inventory.page';
 import { LoginPage } from '../pom/pages/login.page';
+import { inventoryOrderScenarios } from '../scenarios/inventoryScenarios';
 
 test.describe('Inventory Scenarios:', () => {
     test.beforeEach(async ({ page }) => {
@@ -8,10 +9,15 @@ test.describe('Inventory Scenarios:', () => {
         await page.goto('/');
         await loginPage.validLogin();
     });
-    /**
-     * Scenarios:
-     * - items can be reordered and the order is validated
-     * -
-     * 
-     */
+    for (const inventoryOrderScenario of inventoryOrderScenarios) { 
+        test(`Inventory Order Scenario: ${inventoryOrderScenario.test_case}`, async ({ page }) => {
+            const inventoryPage = new InventoryPage(page);
+            await inventoryPage.selectProductSortBy(inventoryOrderScenario.inventory_order);
+            await inventoryPage.assertFirstElementHasHeading(inventoryOrderScenario.heading);
+        });    
+    }
+
+    test.afterEach(async ({ page }) => {
+        await page.close();
+    });
 });

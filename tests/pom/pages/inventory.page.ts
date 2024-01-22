@@ -1,3 +1,4 @@
+import { log } from 'console';
 import { expect, type Locator, type Page } from '@playwright/test';
 
 export class InventoryPage {
@@ -7,7 +8,7 @@ export class InventoryPage {
 
     constructor(page: Page) {
         this.page = page;
-        this.inventoryItem = page.locator('.inventory_item');
+        this.inventoryItem = page.locator('.inventory_item_name');
         this.productSortContainer = page.locator('[data-test="product_sort_container"]');
     }
 
@@ -29,6 +30,10 @@ export class InventoryPage {
         * @return {Promise<void>} - A promise that resolves once the product sort option is selected.
         */
         await this.productSortContainer.selectOption(value);
+    }
+
+    async assertFirstElementHasHeading(value: string) {
+        await expect(this.inventoryItem.first()).toHaveText(value);
     }
 
 }
