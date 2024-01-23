@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 import { InventoryPage } from '../pom/pages/inventory.page';
 import { LoginPage } from '../pom/pages/login.page';
-import { inventoryOrderScenarios } from '../scenarios/inventoryScenarios';
+import { inventoryOrderScenarios, inventoryAddOrRemoveFromCart } from '../scenarios/inventoryScenarios';
 
 test.describe('Inventory Scenarios:', () => {
     test.beforeEach(async ({ page }) => {
@@ -9,6 +9,7 @@ test.describe('Inventory Scenarios:', () => {
         await page.goto('/');
         await loginPage.validLogin();
     });
+    // Scenarios for changing the order of the inventory items, confirming which item appears first.
     for (const inventoryOrderScenario of inventoryOrderScenarios) { 
         test(`Inventory Order Scenario: ${inventoryOrderScenario.test_case}`, async ({ page }) => {
             const inventoryPage = new InventoryPage(page);
@@ -16,7 +17,12 @@ test.describe('Inventory Scenarios:', () => {
             await inventoryPage.assertFirstElementHasHeading(inventoryOrderScenario.heading);
         });    
     }
-
+    // Scenarios for adding and removing items from the cart.
+    test('Add item to cart', async ({ page }) => { 
+        const inventoryPage = new InventoryPage(page);
+        await inventoryPage.addToCart('add-to-cart-sauce-labs-onesie');
+        await page.pause();
+    });
     test.afterEach(async ({ page }) => {
         await page.close();
     });

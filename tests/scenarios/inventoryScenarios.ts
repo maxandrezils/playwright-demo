@@ -21,10 +21,9 @@ export const inventoryOrderScenarios = [
     }
 
 ];
-/**
- * Scenarios:
- * - Confirm title
- * - Confirm inventory
- * - Confirm filters
- * 
- */
+export const inventoryAddOrRemoveFromCart = [
+    {
+        test_case: '',
+        count: 0
+    },
+];
