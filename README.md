@@ -19,5 +19,3 @@ Support for multiple browsers, including Chromium, Firefox, and Webkit
 A powerful API that allows you to control every aspect of the browser
 A built-in screenshot and screen recording tool
 Support for mobile web automation
-
-To learn
