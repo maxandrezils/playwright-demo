@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 import { InventoryPage } from '../pom/pages/inventory.page';
 import { LoginPage } from '../pom/pages/login.page';
-import { inventoryOrderScenarios, inventoryAddToCart } from '../scenarios/inventoryScenarios';
+import { inventoryOrderScenarios } from '../scenarios/inventoryScenarios';
 
 test.describe('Inventory Scenarios:', () => {
     test.beforeEach(async ({ page }) => {
