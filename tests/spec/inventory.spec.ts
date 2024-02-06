@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 import { InventoryPage } from '../pom/pages/inventory.page';
 import { LoginPage } from '../pom/pages/login.page';
-import { inventoryOrderScenarios, inventoryAddToCart } from '../scenarios/inventoryScenarios';
+import { inventoryOrderScenarios } from '../scenarios/inventoryScenarios';
 
 test.describe('Inventory Scenarios:', () => {
     test.beforeEach(async ({ page }) => {
@@ -17,11 +17,11 @@ test.describe('Inventory Scenarios:', () => {
             await inventoryPage.assertFirstElementHasHeading(inventoryOrderScenario.heading);
         });    
     }
-    // Scenarios for adding and removing items from the cart.
+    // Scenarios for adding items to the cart.
     test('Add item to cart', async ({ page }) => { 
         const inventoryPage = new InventoryPage(page);
         await inventoryPage.addToCart('add-to-cart-sauce-labs-onesie');
-        await page.pause();
+
     });
     test.afterEach(async ({ page }) => {
         await page.close();

@@ -21,10 +21,4 @@ export const inventoryOrderScenarios = [
     }
 
 ];
-export const inventoryAddToCart = [
-    {
-        test_case: 'Add Sauce-labs-backpack to cart',
-        button: 'add-to-cart-sauce-labs-backpack',
-        count: 1
-    },
-];
+
