@@ -1,4 +1,4 @@
-import { type Locator, type Page } from '@playwright/test';
+import { expect, type Locator, type Page } from '@playwright/test';
 
 export class Header {
     readonly page: Page;
@@ -20,4 +20,14 @@ export class Header {
         this.logout = page.getByRole('link', { name: 'Logout' });
         this.shoppingCart = page.locator('#shopping_cart_container a');
     }
+
+    async openMenu() { 
+        await this.menu.click();
+    }
+
+    async closeTheMenu() {
+        await this.closeMenu.click();
+    }
+
+
 }
