@@ -39,4 +39,8 @@ export class Header {
     async countItemsInCart() {
         await expect(this.shoppingCartCount).toBeVisible();
     }
+
+    async countItemsInEmptyCart() {
+        await expect(this.shoppingCartCount).toBeHidden();
+    }
 }

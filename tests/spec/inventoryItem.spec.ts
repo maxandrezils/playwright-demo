@@ -13,12 +13,22 @@ test.describe('Inventory Item Scenarios:', async () => {
     });
 
     for (const inventoryItemScenario of inventoryItemScenarios) {
-        test(`${inventoryItemScenario.test_case}`, async ({ page }) => {
+        test(`Add: ${inventoryItemScenario.test_case}`, async ({ page }) => {
             const inventoryPage = new InventoryPage(page);
             const headerPage = new Header(page);
             await inventoryPage.navigateToIndividualItem(inventoryItemScenario.item);
             await inventoryPage.addToCart(inventoryItemScenario.item);
             await headerPage.countItemsInCart();
+        });
+    }
+    for (const inventoryItemScenario of inventoryItemScenarios) {
+        test(`Remove: ${inventoryItemScenario.test_case}`, async ({ page }) => {
+            const inventoryPage = new InventoryPage(page);
+            const headerPage = new Header(page);
+            await inventoryPage.navigateToIndividualItem(inventoryItemScenario.item);
+            await inventoryPage.addToCart(inventoryItemScenario.item);
+            await inventoryPage.removeFromCart(inventoryItemScenario.item);
+            await headerPage.countItemsInEmptyCart();
         });
     }
 });
