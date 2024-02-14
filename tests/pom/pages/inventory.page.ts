@@ -6,6 +6,7 @@ export class InventoryPage {
     readonly productSortContainer: Locator;
     readonly addToCartButtons: { [key: string]: Locator };
     readonly removeButtons: { [key: string]: Locator };
+    readonly navigateToItem: { [key: string]: Locator };
 
     constructor(page: Page) {
         this.page = page;
@@ -25,6 +26,14 @@ export class InventoryPage {
             'sauce-labs-fleece-jacket': page.locator('[data-test="remove-sauce-labs-fleece-jacket"]'),
             'sauce-labs-onesie': page.locator('[data-test="remove-sauce-labs-onesie"]'),
             'test-allthethings-t-shirt-red': page.locator('[data-test="remove-test\\.allthethings\\(\\)-t-shirt-\\(red\\)"]')
+        };
+        this.navigateToItem = {
+            'sauce-labs-backpack': page.locator('#item_4_title_link'),
+            'sauce-labs-bike-light': page.locator('#item_0_title_link'),
+            'sauce-labs-bolt-t-shirt': page.locator('#item_1_title_link'),
+            'sauce-labs-fleece-jacket': page.locator('#item_5_title_link'),
+            'test-allthethings-t-shirt-red': page.locator('#item_2_title_link'),
+            'sauce-labs-onesie': page.locator('#item_3_title_link')
         };
     }
 
@@ -59,6 +68,11 @@ export class InventoryPage {
     }
 
     async navigateToIndividualItem(item: string) {
-        // Implement navigation logic here
+        const button = this.navigateToItem[item];
+        if (button) {
+            await button.click();
+        } else {
+            console.log('This does not exist');
+        }
     }
 }

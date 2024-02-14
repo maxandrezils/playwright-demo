@@ -1,4 +1,4 @@
-import { type Locator, type Page } from '@playwright/test';
+import { expect, type Locator, type Page } from '@playwright/test';
 
 export class Header {
     readonly page: Page;
@@ -9,6 +9,7 @@ export class Header {
     readonly about: Locator;
     readonly logout: Locator;
     readonly shoppingCart: Locator;
+    readonly shoppingCartCount: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -19,6 +20,7 @@ export class Header {
         this.about = page.getByRole('link', { name: 'About' });
         this.logout = page.getByRole('link', { name: 'Logout' });
         this.shoppingCart = page.locator('#shopping_cart_container a');
+        this.shoppingCartCount = page.locator('a').filter({ hasText: '1' });
     }
 
     async openMenu() {
@@ -30,7 +32,11 @@ export class Header {
     }
 
     async goToAllItems() {
-        await openMenu();
+        await this.openMenu();
         await this.allItems.click();
+    }
+
+    async countItemsInCart() {
+        await expect(this.shoppingCartCount).toBeVisible();
     }
 }

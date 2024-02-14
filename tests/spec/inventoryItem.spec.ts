@@ -1,6 +1,6 @@
 import { test } from '@playwright/test';
+import { Header } from '../pom/components/header.page';
 import { InventoryPage } from '../pom/pages/inventory.page';
-import { InventoryItemPage } from '../pom/pages/inventoryItem.page';
 import { LoginPage } from '../pom/pages/login.page';
 import { inventoryItemScenarios } from '../scenarios/inventoryItemScenarios';
 
@@ -15,9 +15,10 @@ test.describe('Inventory Item Scenarios:', async () => {
     for (const inventoryItemScenario of inventoryItemScenarios) {
         test(`${inventoryItemScenario.test_case}`, async ({ page }) => {
             const inventoryPage = new InventoryPage(page);
-            const inventoryItemPage = new InventoryItemPage(page);
-
-
+            const headerPage = new Header(page);
+            await inventoryPage.navigateToIndividualItem(inventoryItemScenario.item);
+            await inventoryPage.addToCart(inventoryItemScenario.item);
+            await headerPage.countItemsInCart();
         });
     }
 });
