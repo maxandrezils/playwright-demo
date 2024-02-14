@@ -9,6 +9,7 @@ export class Header {
     readonly about: Locator;
     readonly logout: Locator;
     readonly shoppingCart: Locator;
+    readonly shoppingCartCount: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -19,9 +20,10 @@ export class Header {
         this.about = page.getByRole('link', { name: 'About' });
         this.logout = page.getByRole('link', { name: 'Logout' });
         this.shoppingCart = page.locator('#shopping_cart_container a');
+        this.shoppingCartCount = page.locator('a').filter({ hasText: '1' });
     }
 
-    async openMenu() { 
+    async openMenu() {
         await this.menu.click();
     }
 
@@ -29,5 +31,16 @@ export class Header {
         await this.closeMenu.click();
     }
 
+    async goToAllItems() {
+        await this.openMenu();
+        await this.allItems.click();
+    }
 
+    async countItemsInCart() {
+        await expect(this.shoppingCartCount).toBeVisible();
+    }
+
+    async countItemsInEmptyCart() {
+        await expect(this.shoppingCartCount).toBeHidden();
+    }
 }
