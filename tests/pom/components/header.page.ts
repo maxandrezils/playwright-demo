@@ -1,4 +1,4 @@
-import { expect, type Locator, type Page } from '@playwright/test';
+import { type Locator, type Page } from '@playwright/test';
 
 export class Header {
     readonly page: Page;
@@ -21,7 +21,7 @@ export class Header {
         this.shoppingCart = page.locator('#shopping_cart_container a');
     }
 
-    async openMenu() { 
+    async openMenu() {
         await this.menu.click();
     }
 
@@ -29,5 +29,8 @@ export class Header {
         await this.closeMenu.click();
     }
 
-
+    async goToAllItems() {
+        await openMenu();
+        await this.allItems.click();
+    }
 }
