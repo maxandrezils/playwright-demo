@@ -7,7 +7,7 @@ export class Header {
     readonly closeMenu: Locator;
     readonly allItems: Locator;
     readonly about: Locator;
-    readonly logout: Locator;
+    readonly logoutButton: Locator;
     readonly shoppingCart: Locator;
     readonly shoppingCartCount: Locator;
 
@@ -18,7 +18,7 @@ export class Header {
         this.closeMenu = page.getByRole('button', { name: 'Close Menu' });
         this.allItems = page.getByRole('link', { name: 'All Items' });
         this.about = page.getByRole('link', { name: 'About' });
-        this.logout = page.getByRole('link', { name: 'Logout' });
+        this.logoutButton = page.getByRole('link', { name: 'Logout' });
         this.shoppingCart = page.locator('#shopping_cart_container a');
         this.shoppingCartCount = page.locator('a').filter({ hasText: '1' });
     }
@@ -42,5 +42,10 @@ export class Header {
 
     async countItemsInEmptyCart() {
         await expect(this.shoppingCartCount).toBeHidden();
+    }
+
+    async logout() {
+        await this.openMenu();
+        await this.logoutButton.click();
     }
 }
