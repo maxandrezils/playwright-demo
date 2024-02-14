@@ -22,6 +22,7 @@ export class InventoryPage {
         };
         this.removeButtons = {
             'sauce-labs-backpack': page.locator('[data-test="remove-sauce-labs-backpack"]'),
+            'sauce-labs-bike-light': page.locator('[data-test="remove-sauce-labs-bike-light"]'),
             'sauce-labs-bolt-t-shirt': page.locator('[data-test="remove-sauce-labs-bolt-t-shirt"]'),
             'sauce-labs-fleece-jacket': page.locator('[data-test="remove-sauce-labs-fleece-jacket"]'),
             'sauce-labs-onesie': page.locator('[data-test="remove-sauce-labs-onesie"]'),
@@ -32,8 +33,8 @@ export class InventoryPage {
             'sauce-labs-bike-light': page.locator('#item_0_title_link'),
             'sauce-labs-bolt-t-shirt': page.locator('#item_1_title_link'),
             'sauce-labs-fleece-jacket': page.locator('#item_5_title_link'),
-            'test-allthethings-t-shirt-red': page.locator('#item_2_title_link'),
-            'sauce-labs-onesie': page.locator('#item_3_title_link')
+            'test-allthethings-t-shirt-red': page.locator('#item_3_title_link'),
+            'sauce-labs-onesie': page.locator('#item_2_title_link')
         };
     }
 
@@ -54,6 +55,7 @@ export class InventoryPage {
         if (button) {
             await button.click();
         } else {
+            await this.page.screenshot();
             console.log('No such button exists');
         }
     }
@@ -63,6 +65,7 @@ export class InventoryPage {
         if (button) {
             await button.click();
         } else {
+            await this.page.screenshot();
             console.log('This does not exist');
         }
     }
@@ -72,6 +75,7 @@ export class InventoryPage {
         if (button) {
             await button.click();
         } else {
+            await this.page.screenshot();
             console.log('This does not exist');
         }
     }
