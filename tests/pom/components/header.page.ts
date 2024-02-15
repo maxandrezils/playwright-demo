@@ -1,4 +1,4 @@
-import { expect, type Locator, type Page } from '@playwright/test';
+import { Locator, Page } from '@playwright/test';
 
 export class Header {
     readonly page: Page;
@@ -14,13 +14,13 @@ export class Header {
     constructor(page: Page) {
         this.page = page;
         this.cartLink = page.locator('#shopping_cart_container a');
-        this.menu = page.getByRole('button', { name: 'Open Menu' });
-        this.closeMenu = page.getByRole('button', { name: 'Close Menu' });
-        this.allItems = page.getByRole('link', { name: 'All Items' });
-        this.about = page.getByRole('link', { name: 'About' });
-        this.logoutButton = page.getByRole('link', { name: 'Logout' });
+        this.menu = page.locator('button[aria-label="Open Menu"]');
+        this.closeMenu = page.locator('button[aria-label="Close Menu"]');
+        this.allItems = page.locator('a[aria-label="All Items"]');
+        this.about = page.locator('a[aria-label="About"]');
+        this.logoutButton = page.locator('a[aria-label="Logout"]');
         this.shoppingCart = page.locator('#shopping_cart_container a');
-        this.shoppingCartCount = page.locator('a').filter({ hasText: '1' });
+        this.shoppingCartCount = page.locator('a:has-text("1")');
     }
 
     async openMenu() {
@@ -37,11 +37,11 @@ export class Header {
     }
 
     async countItemsInCart() {
-        await expect(this.shoppingCartCount).toBeVisible();
+        await this.shoppingCartCount.isVisible();
     }
 
     async countItemsInEmptyCart() {
-        await expect(this.shoppingCartCount).toBeHidden();
+        await this.shoppingCartCount.isHidden();
     }
 
     async logout() {

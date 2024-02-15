@@ -7,16 +7,17 @@ test.describe('Inventory Scenarios:', () => {
     test.beforeEach(async ({ page }) => {
         const loginPage = new LoginPage(page);
         await page.goto('/');
-        await loginPage.validLogin();
+        await loginPage.login('standard_user', 'secret_sauce');
     });
-    // Scenarios for changing the order of the inventory items, confirming which item appears first.
+
     for (const inventoryOrderScenario of inventoryOrderScenarios) {
-        test(`Inventory Order Scenario: ${inventoryOrderScenario.test_case}`, async ({ page }) => {
+        test(`Inventory Order Scenario: ${inventoryOrderScenario.testCase}`, async ({ page }) => {
             const inventoryPage = new InventoryPage(page);
             await inventoryPage.selectProductSortBy(inventoryOrderScenario.inventory_order);
             await inventoryPage.assertFirstElementHasHeading(inventoryOrderScenario.heading);
         });
     }
+
     test.afterEach(async ({ page }) => {
         await page.close();
     });

@@ -9,11 +9,11 @@ test.describe('Inventory Item Scenarios:', async () => {
     test.beforeEach(async ({ page }) => {
         const loginPage = new LoginPage(page);
         await page.goto('/');
-        await loginPage.validLogin();
+        await loginPage.login('standard_user', 'secret_sauce');
     });
 
     for (const inventoryItemScenario of inventoryItemScenarios) {
-        test(`Add: ${inventoryItemScenario.test_case}`, async ({ page }) => {
+        test(`Add: ${inventoryItemScenario.testCase}`, async ({ page }) => {
             const inventoryPage = new InventoryPage(page);
             const headerPage = new Header(page);
             await inventoryPage.navigateToIndividualItem(inventoryItemScenario.item);
@@ -22,7 +22,7 @@ test.describe('Inventory Item Scenarios:', async () => {
         });
     }
     for (const inventoryItemScenario of inventoryItemScenarios) {
-        test(`Remove: ${inventoryItemScenario.test_case}`, async ({ page }) => {
+        test(`Remove: ${inventoryItemScenario.testCase}`, async ({ page }) => {
             const inventoryPage = new InventoryPage(page);
             const headerPage = new Header(page);
             await inventoryPage.navigateToIndividualItem(inventoryItemScenario.item);

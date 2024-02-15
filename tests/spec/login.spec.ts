@@ -12,14 +12,14 @@ test.describe('Login Scenarios:', () => {
     test('Login with valid credentials', async ({ page }) => {
         const loginPage = new LoginPage(page);
         const inventoryPage = new InventoryPage(page);
-        await loginPage.genericLogin('standard_user', 'secret_sauce');
+        await loginPage.login('standard_user', 'secret_sauce');
         await inventoryPage.expectInventoryCount(6);
     });
 
     for (const loginScenario of loginScenarios) {
-        test(`Invalid Login: ${loginScenario.test_case}`, async ({ page }) => {
+        test(`Invalid Login: ${loginScenario.testCase}`, async ({ page }) => {
             const loginPage = new LoginPage(page);
-            await loginPage.genericLogin(loginScenario.username, loginScenario.password);
+            await loginPage.login(loginScenario.username, loginScenario.password);
             await loginPage.expectErrorMessage(loginScenario.error_message);
         });
     }
@@ -27,7 +27,7 @@ test.describe('Login Scenarios:', () => {
     test('Logout of SauceLabs demo site', async ({ page }) => {
         const loginPage = new LoginPage(page);
         const header = new Header(page);
-        await loginPage.validLogin();
+        await loginPage.login('standard_user', 'secret_sauce');
         await header.logout();
         await expect(loginPage.usernameInput).toBeVisible();
     })
