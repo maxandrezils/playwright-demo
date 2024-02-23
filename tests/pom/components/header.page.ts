@@ -14,11 +14,11 @@ export class Header {
     constructor(page: Page) {
         this.page = page;
         this.cartLink = page.locator('#shopping_cart_container a');
-        this.menu = page.locator('button[aria-label="Open Menu"]');
+        this.menu = page.getByRole('button', { name: 'Open Menu' });
         this.closeMenu = page.locator('button[aria-label="Close Menu"]');
         this.allItems = page.locator('a[aria-label="All Items"]');
         this.about = page.locator('a[aria-label="About"]');
-        this.logoutButton = page.locator('a[aria-label="Logout"]');
+        this.logoutButton = page.getByRole('link', { name: 'Logout' });
         this.shoppingCart = page.locator('#shopping_cart_container a');
         this.shoppingCartCount = page.locator('a:has-text("1")');
     }
