@@ -51,6 +51,29 @@ You can configure the browser and other settings for the tests in the `playwrigh
 
 The test cases are written using TypeScript and can be found in the `tests` directory. You can create new test files or modify existing ones to suit your testing needs. Playwright provides a rich set of APIs for interacting with web pages, which you can use to simulate user actions and verify expected behavior.
 
+## Linting
+
+This project uses ESLint for code linting and Prettier for code formatting. Linting helps to catch potential errors and stylistic inconsistencies early in the development process, while formatting ensures consistent code style across the project.
+
+## Running Linting:
+
+To check for linting errors and warnings:
+
+```Bash
+npm run lint
+```
+
+To fix potential issues automatically (where applicable):
+
+```Bash
+npm run lint:fix
+```
+
+## Code Formatting:
+
+Prettier formats your code automatically on save using an editor extension or a git pre-commit hook.
+
+
 ## Contributing
 
 Contributions are welcome! If you find any issues or have suggestions for improvements, feel free to open an issue or submit a pull request.

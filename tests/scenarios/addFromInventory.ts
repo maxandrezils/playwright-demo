@@ -1,3 +1,5 @@
-export const addFromInventory = [
+export const addFromInventoryScenarios = [
+    {
 
+    }
 ];
