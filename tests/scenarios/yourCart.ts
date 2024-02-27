@@ -1,5 +1,5 @@
 export const yourCartScenarios = [
     {
-        testCase: ''
+        testCase: 'Your Cart.'
     }
 ];
