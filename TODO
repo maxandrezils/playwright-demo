@@ -1,0 +1,4 @@
+- Add scenarios for checkout
+    - Add to cart from inventory
+    - Add to cart from inventory_item
+    - attempt to checkout with no items in cart.

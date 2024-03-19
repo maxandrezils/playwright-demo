@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
-import { InventoryPage } from '../pom/pages/inventory.page';
 import { Header } from '../pom/components/header.page';
+import { InventoryPage } from '../pom/pages/inventory.page';
 import { LoginPage } from '../pom/pages/login.page';
 import { loginScenarios } from '../scenarios/loginScenarios';
 
@@ -30,7 +30,7 @@ test.describe('Login Scenarios:', () => {
         await loginPage.login('standard_user', 'secret_sauce');
         await header.logout();
         await expect(loginPage.usernameInput).toBeVisible();
-    })
+    });
 
     test.afterEach(async ({ page }) => {
         await page.close();
