@@ -12,7 +12,7 @@ test.describe('Checkout Step one scenarios: ', async () => {
     });
 
     for (const checkoutStepOneScenario of checkoutStepOneScenarios) {
-        test(`Validations ${checkoutStepOneScenario.testCase}`, async ({page}) => {
+        test(`Validations: ${checkoutStepOneScenario.testCase}`, async ({page}) => {
             const checkoutStepOne = new CheckoutStepOnePage(page);
             await checkoutStepOne.enterFirstName(checkoutStepOneScenario.firstName);
             await checkoutStepOne.enterLastName(checkoutStepOneScenario.lastName);
