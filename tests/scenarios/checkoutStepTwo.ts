@@ -1,5 +1,5 @@
 export const checkoutStepTwoScenarios = [
-    {
-        testCase: 'Placeholder for checkout step two'
-    }
+	{
+		testCase: "Placeholder for checkout step two",
+	},
 ];

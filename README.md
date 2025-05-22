@@ -30,7 +30,7 @@ To run the tests, you'll need to have Node.js and npm installed on your machine.
 3. Install the project dependencies:
 
    ```bash
-   npm install
+   pnpm install
    ```
 
 ### Running the Tests
@@ -38,7 +38,7 @@ To run the tests, you'll need to have Node.js and npm installed on your machine.
 To run the automated tests using Playwright, execute the following command:
 
 ```bash
-npm test
+pnpm test
 ```
 
 This command will launch the specified browser (default is Chromium) and execute the test cases defined in the `tests` directory.
@@ -51,27 +51,20 @@ You can configure the browser and other settings for the tests in the `playwrigh
 
 The test cases are written using TypeScript and can be found in the `tests` directory. You can create new test files or modify existing ones to suit your testing needs. Playwright provides a rich set of APIs for interacting with web pages, which you can use to simulate user actions and verify expected behavior.
 
-## Linting
-
-This project uses ESLint for code linting and Prettier for code formatting. Linting helps to catch potential errors and stylistic inconsistencies early in the development process, while formatting ensures consistent code style across the project.
 
 ## Running Linting:
 
 To check for linting errors and warnings:
 
 ```Bash
-npm run lint
+pnpm lint
 ```
 
 To fix potential issues automatically (where applicable):
 
 ```Bash
-npm run lint:fix
+pnpm lint:fix
 ```
-
-## Code Formatting:
-
-Prettier formats your code automatically on save using an editor extension or a git pre-commit hook.
 
 
 ## Contributing

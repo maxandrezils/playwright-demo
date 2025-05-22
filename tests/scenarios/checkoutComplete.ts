@@ -1,5 +1,5 @@
 export const checkoutCompleteScenarios = [
-    {
-        testCase: 'Demo'
-    }
+	{
+		testCase: "Demo",
+	},
 ];

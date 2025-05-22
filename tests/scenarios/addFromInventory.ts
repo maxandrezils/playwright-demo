@@ -1,5 +1,5 @@
 export const addFromInventoryScenarios = [
-    {
-        testCase: ''
-    }
+	{
+		testCase: "",
+	},
 ];
